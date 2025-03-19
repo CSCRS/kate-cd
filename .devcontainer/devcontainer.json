@@ -1,0 +1,11 @@
+{
+  "name": "Jurse2025",
+  "build": {
+    "dockerfile": "../environment/Dockerfile"
+  },
+  "runArgs": ["--shm-size=2gb"],
+  "postCreateCommand": "mkdir -p ${containerWorkspaceFolder}/results",
+  "containerEnv": {
+      "PYTHONWARNINGS": "ignore::DeprecationWarning"
+  }
+}
