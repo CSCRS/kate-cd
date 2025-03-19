@@ -1,6 +1,6 @@
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hkayabilisim/cpepowereng2025.git)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hkayabilisim/jurse2025.git)
 
-This capsule contains codes, data and computing instructions to reproduce the results in "*A Reinforcement Learning Based Approach to Solve Voltage Issues*", the study presented in 19th International Conference on Compatibility, Power Electronics, and Power Engineering ([CPE-POWERENG 2025](https://cpepowereng2025.org/)). 
+This Open Science Library capsule contains codes, data and computing instructions to reproduce the results in "*Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images*", the study presented in 17th International Conference on Joint Urban Remote Sensing ([JURSE 2025](https://2025.ieee-jurse.org)). 
 
 # How to reproduce the results
 Everything needed is already contained in this capsule. Depending on your goal and your time constraints, we provide two alternatives to run the capsule and obtain the results: via Open Science Library or Capsule Export.
@@ -19,7 +19,7 @@ If you would like to use your own computing resources for reproduction, then you
 ### The computational environment (Docker image)
 In your terminal, navigate to the folder where you've extracted the capsule and execute the following command:
 ```shell
-cd environment && docker build . --tag 51487ce3-72c6-4403-ac0c-f597d673d51f; cd ..
+cd environment && docker build . --tag e24e05d9-fd7f-4584-878b-4f19e31b750c; cd ..
 ```
 
 This step will recreate the environment (i.e., the Docker image) locally, fetching and installing any required dependencies in the process. If any external resources have become unavailable for any reason, the environment will fail to build.
@@ -32,7 +32,7 @@ docker run --platform linux/amd64 --rm \
   --volume "$PWD/data":/data \
   --volume "$PWD/code":/code \
   --volume "$PWD/results":/results \
-  51487ce3-72c6-4403-ac0c-f597d673d51f bash run
+  e24e05d9-fd7f-4584-878b-4f19e31b750c bash run
 ```
 
 # For Developers
@@ -64,10 +64,12 @@ When you visit [Open Science Library](https://codeocean.com/explore), you will s
 # Results
 The mapping between capsule results and the content in the manuscript is as follows:
 
-    Simulation      CodeOcean         Manuscript
+    Code            CodeOcean         Manuscript
     ------------    ----------------  ----------
-    Simulation A    SimulationA.pdf   Figure 3
-    Simulation B    SimulationB.pdf   Figure 4
+    predictions.py  val_scores.txt    Table II
+    evaluate.py     train_scores.txt
+                    test_scores.txt 
+    ---------------------------------------------
 
 For the explanation of the simulations, please check the related code.
 
