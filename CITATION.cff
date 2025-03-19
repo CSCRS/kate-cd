@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Nayir"
+  given-names: "Hasan"
+- family-names: "Taskin"
+  given-names: "Gulsen"
+- family-names: "Kaya"
+  given-names: "Huseyin"
+- family-names: "Musaoglu"
+  given-names: "Nebiye"
+- family-names: "Amirgan"
+  given-names: "Burcu"
+- family-names: "Özaydın"
+  given-names: "Esra"
+- family-names: "Deveci"
+  given-names: "Umur"
+title: "Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images"
+version: 1
+date-released: 2025-03-15
+url: "https://github.com/hkayabilisim/jurse2025"
