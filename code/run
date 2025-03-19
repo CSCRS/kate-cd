@@ -44,3 +44,4 @@ do
       # Based on the predictions above, calculate the scores
       # Make sure to run predicitions before
       python -u evaluate.py --partition $partition
+done
