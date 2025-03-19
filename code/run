@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -ex
+
+# This is the master script for the capsule. 
+# When you click "Reproducible Run", the code in this file will execute.
+
+# Patching ultralytics
+# https://github.com/DingLei14/SAM-CD/blob/main/models/FastSAM/README.md
+cp -v patch/predictor.py /opt/conda/lib/python3.10/site-packages/ultralytics/yolo/engine/predictor.py
+cp -v patch/head.py      /opt/conda/lib/python3.10/site-packages/ultralytics/nn/modules/head.py
+cp -v patch/tasks.py     /opt/conda/lib/python3.10/site-packages/ultralytics/nn/tasks.py
+
+# Prediction and evaluation
+#
+# For each partition
+#  - make predictions via ResNet, SAM and effSAM
+#  - calculate performance metrics
+#
+# !!!! NOTE !!! you can include train and val partitions if you wish
+#for partition in train val test
+for partition in val test
+do
+      # effSAM Predictions on test dataset
+      python -u predictions.py  \
+            --test_dir ../data/label_studio_pre_post/$partition \
+            --pred_dir ../results/$partition/effSAM \
+            --chkpt_path ../data/checkpoints/effSAM_CD_e33_OA96.58_F32.44_IoU22.82.pth \
+            --encoder effSAM
+
+      # ResNet Predictions on test dataset
+      python -u predictions.py  \
+            --test_dir ../data/label_studio_pre_post/$partition \
+            --pred_dir ../results/$partition/ResNet \
+            --chkpt_path ../data/checkpoints/ResNet_CD_e19_OA95.93_F29.45_IoU19.75.pth \
+            --encoder ResNet
+
+      # SAM Predictions on test dataset
+      python -u predictions.py  \
+            --test_dir ../data/label_studio_pre_post/$partition \
+            --pred_dir ../results/$partition/SAM \
+            --chkpt_path ../data/checkpoints/SAM_CD_e10_OA96.68_F35.55_IoU25.07.pth \
+            --encoder SAM
+
+      # Based on the predictions above, calculate the scores
+      # Make sure to run predicitions before
+      python -u evaluate.py --partition $partition
