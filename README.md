@@ -5,9 +5,22 @@ If you are reading this README, you are probably visiting one of the following p
 * [GitHub Repository](https://github.com/hkayabilisim/jurse2025)
 * [Zenodo](https://zenodo.org)
 
-The **MYDATASET** and associated codes and supplementary information are published in three places i.e. CodeOcean, GitHub and Zenodo for providing redundancy and extended reach. All of the content uploaded to the three websites are the same. The CodeOcean platform is mainly used for reproducibility, whereas GitHub is used to provide git access and hence easy collaboration between **MYDATASET** developers. The sole purpose of Zenodo is to provide a simple access to the dataset.
+The **MYDATASET** and associated codes and supplementary information are published in three places i.e. CodeOcean, GitHub and Zenodo for providing redundancy and extended reach. All of the content uploaded to the three websites are the same. The CodeOcean platform is mainly used for reproducibility, whereas GitHub is used to provide git access and hence easy collaboration between **MYDATASET** developers. The sole purpose of Zenodo is to provide another entry point to the dataset.
 
-# CodeOcean: How to reproduce the results
+# Content
+
+## Dataset
+**TODO**: *A brief explanation of the dataset. What it is needed, why it is needed etc.* 
+### Raw sources
+**TODO**: *Explanation of the raw source material. Which satellite images are used. What is the collection process?, etc.*
+### Labelling
+**TODO**: *Grid generation. Labelling effort. LabelStudio process and more*
+### Machine-Learning ready format
+**TODO**: *The conversion of the data into SAM-CD format. Explain the final version of the dataset* 
+## Machine Learning
+**TODO**: *SAM-CD framework, training and inference processes* 
+
+# Reproducibility: CodeOcean
 This Open Science Library capsule contains codes, data and computing instructions to reproduce the results. Everything needed is already contained in the capsule. Depending on your goal and your time constraints, we provide two alternatives to run the capsule and obtain the results: via Open Science Library or Capsule Export.
 
 ## Open Science Library
@@ -40,7 +53,17 @@ docker run --platform linux/amd64 --rm \
   e24e05d9-fd7f-4584-878b-4f19e31b750c bash run
 ```
 
-# GitHub: Development Access
+## Published results
+In the results folder of the CodeOcean capsule, you can reach the pre-computed outputs of the code or you can generate them from scratch with single-click in CodeOcean. In either case, these outputs correspond to the published content in the manuscript. The mapping between capsule results and the content in the manuscript is as follows:
+
+    Code            CodeOcean         Manuscript
+    ------------    ----------------  ----------
+    predictions.py  val_scores.txt    Table II
+    evaluate.py     train_scores.txt
+                    test_scores.txt 
+    ---------------------------------------------
+
+# For Developers: GitHub
 If you would like to look at the capsule more closely, and build a working development environment then you can use [Development Containers](https://containers.dev/) functionality of VSCode. For this purpose, we created **.devcontainer/devcontainer.json** file under the root folder in the capsule. The purpose of this config file is to tell VSCode the location of the **Dockerfile**. Here, for design purposes, we used the same **Dockerfile** provided by CodeOcean. In this way, we do not interfere the building process in the CodeOcean. 
 
 To open the GitHub repository in DevContainers, you can click the button below. It will open the VSCode in DevContainers mode and fetch the GitHub repository automatically.
@@ -48,13 +71,19 @@ To open the GitHub repository in DevContainers, you can click the button below. 
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hkayabilisim/jurse2025.git)
 
 ## Obtain the capsule
-To open the capsule in VSCode via [Development Containers](https://containers.dev/), you first need to download the capsule. There are two ways: either you can use the capsule export, or you can pull the capsule from git repository. We recommend using git.
+To open the capsule in VSCode via [Development Containers](https://containers.dev/), you first need to download the capsule. There are two ways: either you can use the capsule export, or you can pull the capsule from git repository. We recommend using git. You can use either CodeOcean or GitHub repository (both have the same content).
 
 ~~~bash
+# CodeOcean git repository
 $ git clone https://git.codeocean.com/capsule-3747729.git
 ~~~
+or 
+~~~bash
+# GitHub git repository
+$ git clone https://github.com/hkayabilisim/jurse2025.git
+~~~
 
-The next step is to open VSCode, select *Open a Remote Window* and then *Open Folder in Container..." option. Select your git folder and the VSCode should start building Docker container and open the content of the capsule. 
+The next step is to open VSCode, select *Open a Remote Window* and then *Open Folder in Container..." option. Select your cloned git folder and the VSCode should start building Docker container and open the content of the capsule. 
 
 ## Relative vs Absolute paths
 We use relative paths to locate the data files in the code to achieve compatibility between different working environments. In this way, the same codes and data structure can be used without any change if one tries to run the capsule on [Open Science Library](https://codeocean.com/explore) or local development environment. 
@@ -69,16 +98,6 @@ This approach also fits to the way how CodeOcean runs the capsule.
 ## results folder
 When you visit [Open Science Library](https://codeocean.com/explore), you will see that published results are always populated under **results** folder. This is a special folder CodeOcean uses to store the outputs likes PDFs, PNGs, or ordinary text outputs. Therefore, in CodeOcean capsules **results** folder is not included in *git* structure. So, when you pull or export a CodeOcean capsule, you won't see this folder. Whenever you create an output, you should create **results** folder and put the outputs under it. For the same reason, you should not include it to git. 
 
-# Results
-The mapping between capsule results and the content in the manuscript is as follows:
 
-    Code            CodeOcean         Manuscript
-    ------------    ----------------  ----------
-    predictions.py  val_scores.txt    Table II
-    evaluate.py     train_scores.txt
-                    test_scores.txt 
-    ---------------------------------------------
-
-For the explanation of the simulations, please check the related code.
 
  
