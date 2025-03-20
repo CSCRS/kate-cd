@@ -4,19 +4,32 @@ set -ex
 # This is the master script for the capsule. 
 # When you click "Reproducible Run", the code in this file will execute.
 
+#########################################################################
 # Patching ultralytics
 # https://github.com/DingLei14/SAM-CD/blob/main/models/FastSAM/README.md
+#########################################################################
 cp -v patch/predictor.py /opt/conda/lib/python3.10/site-packages/ultralytics/yolo/engine/predictor.py
 cp -v patch/head.py      /opt/conda/lib/python3.10/site-packages/ultralytics/nn/modules/head.py
 cp -v patch/tasks.py     /opt/conda/lib/python3.10/site-packages/ultralytics/nn/tasks.py
 
+#########################################################################
+# TODO: Training
+#########################################################################
+#python -u training.py --encoder ResNet
+#python -u training.py --encoder SAM
+#python -u training.py --encoder effSAM
+
+
+#########################################################################
 # Prediction and evaluation
-#
+#########################################################################
 # For each partition
 #  - make predictions via ResNet, SAM and effSAM
 #  - calculate performance metrics
 #
-# !!!! NOTE !!! you can include train and val partitions if you wish
+# !!!! NOTE !!! you can include train, val and test partitions
+# It is recommended to use test or val only and then enable the other
+# partitions for full run.
 #for partition in train val test
 for partition in val test
 do
@@ -45,3 +58,9 @@ do
       # Make sure to run predicitions before
       python -u evaluate.py --partition $partition
 done
+
+
+#########################################################################
+# Visualization
+#########################################################################
+python -u visualization.py --partition test
