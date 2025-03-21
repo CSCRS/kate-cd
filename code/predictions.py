@@ -178,22 +178,28 @@ def predict(net, opt):
                       if opt.TTA:
                           tensorA_v = torch.flip(tensorA, [2])
                           tensorB_v = torch.flip(tensorB, [2])
-                        #   output_v, _, _ = net(tensorA_v, tensorB_v)
-                          output_v = net(tensorA_v, tensorB_v)
+                          if opt.encoder == 'ResNet':
+                              output_v = net(tensorA_v, tensorB_v)
+                          else:
+                              output_v, _, _ = net(tensorA_v, tensorB_v)
                           output_v = torch.flip(output_v, [2])
                           output += F.sigmoid(output_v)
                                       
                           tensorA_h = torch.flip(tensorA, [3])
                           tensorB_h = torch.flip(tensorB, [3])
-                        #   output_h, _, _ = net(tensorA_h, tensorB_h)
-                          output_h = net(tensorA_h, tensorB_h)
+                          if opt.encoder == 'ResNet':
+                              output_h = net(tensorA_h, tensorB_h)
+                          else:
+                              output_h, _, _ = net(tensorA_h, tensorB_h)
                           output_h = torch.flip(output_h, [3])
                           output += F.sigmoid(output_h)
                           
                           tensorA_hv = torch.flip(tensorA, [2,3])
                           tensorB_hv = torch.flip(tensorB, [2,3])
-                        #   output_hv, _, _ = net(tensorA_hv, tensorB_hv)
-                          output_hv = net(tensorA_hv, tensorB_hv)
+                          if opt.encoder == 'ResNet':
+                              output_hv = net(tensorA_hv, tensorB_hv)
+                          else:
+                              output_hv, _, _ = net(tensorA_hv, tensorB_hv)
                           output_hv = torch.flip(output_hv, [2,3])
                           output += F.sigmoid(output_hv)            
                           output = output/4.0
