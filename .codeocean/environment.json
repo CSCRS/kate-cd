@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"base_image": "registry.codeocean.com/codeocean/pytorch:2.1.0-cuda11.8.0-mambaforge23.1.0-4-python3.10.12-ubuntu22.04",
+	"base_image": "registry.codeocean.com/codeocean/pytorch:2.4.0-cuda12.4.0-mambaforge24.5.0-0-python3.12.4-ubuntu22.04",
 	"options": {},
 	"installers": {
 		"apt": {

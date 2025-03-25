@@ -1,5 +1,5 @@
-# hash:sha256:d8f48661183a4f744a312160ed0e1bddf7f668658c77409c41237e12950c7d04
-FROM registry.codeocean.com/codeocean/pytorch:2.1.0-cuda11.8.0-mambaforge23.1.0-4-python3.10.12-ubuntu22.04
+# hash:sha256:30b61073907c6059ec6b5d95ca8208a0325b6304a7e23d821aa32f5741d6e122
+FROM registry.codeocean.com/codeocean/pytorch:2.4.0-cuda12.4.0-mambaforge24.5.0-0-python3.12.4-ubuntu22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
