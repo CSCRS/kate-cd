@@ -1,14 +1,13 @@
-# Welcome to **MYDATASET** 
-If you are reading this README, you are probably visiting one of the following places to learn more about **MYDATASET** and the associated study "*Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images*", to be presented in 17th International Conference on Joint Urban Remote Sensing ([JURSE 2025](https://2025.ieee-jurse.org)). 
+# Welcome to **KATE-CD Dataset** 
+Welcome to the home page of Kahramanmaraş Türkiye Earthquake-Change Detection Dataset (KATE-CD). If you are reading this README, you are probably visiting one of the following places to learn more about **KATE-CD Dataset** and the associated study "*Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images*", to be presented in 17th International Conference on Joint Urban Remote Sensing ([JURSE 2025](https://2025.ieee-jurse.org)). 
 
 * [Code Ocean Capsule](https://codeocean.com/capsule/3747729) in [Open Science Library](https://codeocean.com/explore) 
-* [GitHub Repository](https://github.com/hkayabilisim/jurse2025)
-* [Zenodo](https://zenodo.org)
+* [GitHub Repository](https://github.com/hkayabilisim/kate-cd)
+* [HuggingFace](https://huggingface.co/datasets/hkayabilisim/kate-cd)
 
-The **MYDATASET** and associated codes and supplementary information are published in three places i.e. CodeOcean, GitHub and Zenodo for providing redundancy and extended reach. All of the content uploaded to the three websites are the same. The CodeOcean platform is mainly used for reproducibility, whereas GitHub is used to provide git access and hence easy collaboration between **MYDATASET** developers. The sole purpose of Zenodo is to provide another entry point to the dataset.
+The **KATE-CD Dataset** and the associated codes and supplementary information are published in three places i.e. CodeOcean, GitHub and HuggingFAce for providing redundancy and extended reach. All of the content uploaded to the three websites are the same except small differences because of platform requirements. The CodeOcean platform is mainly used for reproducibility, whereas GitHub is used to provide git access and hence easy collaboration between **KATE-CD Dataset** developers. Finally HuggingFace provides an easy access to the database where you can run existing models in HuggingFace on KATE-CD without too much effort.
 
 # Content
-
 ## Dataset
 **TODO**: *A brief explanation of the dataset. What it is needed, why it is needed etc.* 
 ### Raw sources
