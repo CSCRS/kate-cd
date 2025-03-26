@@ -6,7 +6,8 @@ from utils.metric_tool import get_mIoU
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import matplotlib.lines as mlines
-from utils import align_dims
+from utils.utils import align_dims
+import os
 
 
 
@@ -60,9 +61,8 @@ def save_images_as_pdf(pre, post, gt, pred_resnet, pred_samcd, pred_effs, iou_sc
 
     num_images = min(12, len(image_name_list)) 
     fig, axes = plt.subplots(6, num_images, figsize=(3 * num_images, 18))  
-
-    row_labels = ["Pre", "Post", "GT", "ResNet-CD", "SAM-CD", "EffSAM-CD"]
-    column_labels = ["test_20", "test_33", "test_18", "test_22", "test_5", "test_10", "test_9", "test_19", "test_29","test_34", "test_17", "test_36"]
+    row_labels = ["Pre", "Post", "GT", "Resnet", "Fast SAM", "Efficient SAM"]
+    column_labels = image_name_list[:num_images]
 
     for i in range(num_images):
         axes[0, i].imshow(pre_sorted[i])
@@ -160,15 +160,15 @@ def main():
         GTs.append(gt)
         
         pred_resnet = io.imread(os.path.join(resnet_dir, it)) // 255
-        conf_pred_resnet = calc_TP_matrix_per_image(pred_resnet, gt)
+        conf_pred_resnet = calc_conf_matrix(pred_resnet, gt)
         pred_resnets.append(conf_pred_resnet)
         
         pred_samcd = io.imread(os.path.join(samcd_dir, it)) // 255
-        conf_pred_samcd = calc_TP_matrix_per_image(pred_samcd, gt)
+        conf_pred_samcd = calc_conf_matrix(pred_samcd, gt)
         pred_samcds.append(conf_pred_samcd)
         
         pred_effsam = io.imread(os.path.join(effsam_dir, it)) // 255
-        conf_pred_effsam = calc_TP_matrix_per_image(pred_effsam, gt)
+        conf_pred_effsam = calc_conf_matrix(pred_effsam, gt)
         iou_score_pred.append(pred_effsam)
 
         pred_effs.append(conf_pred_effsam)
