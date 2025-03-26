@@ -15,15 +15,19 @@ cp -v patch/tasks.py     /opt/conda/lib/python3.12/site-packages/ultralytics/nn/
 python cuda_test.py
 
 #########################################################################
-# TODO: Training
+# Training
 #########################################################################
-python -u training.py --encoder ResNet \
-                      --epochs 1 \
-                      --data_loader_num_workers 0 \
-                      --train_batch_size 16
-#python -u training.py --encoder SAM
-#python -u training.py --encoder effSAM
-
+# !!! NOTE !!! We commented out the training part because it takes too much time 
+# and consumes significant computational resources.
+# You can uncomment and run it manually when needed.
+#
+# for encoder in ResNet SAM effSAM
+# do
+#       python -u training.py --encoder $encoder \
+#                         --epochs 50 \
+#                         --data_loader_num_workers 0 \
+#                         --train_batch_size 16
+# done
 
 #########################################################################
 # Prediction and evaluation
@@ -35,37 +39,40 @@ python -u training.py --encoder ResNet \
 # !!!! NOTE !!! you can include train, val and test partitions
 # It is recommended to use test or val only and then enable the other
 # partitions for full run.
-#for partition in train val test
+for partition in train val test
 #for partition in val test
-#do
+do
       # effSAM Predictions on test dataset
-#      python -u predictions.py  \
-#            --test_dir ../data/label_studio_pre_post/$partition \
-#            --pred_dir ../results/$partition/effSAM \
-#            --chkpt_path ../data/checkpoints/effSAM_CD_e33_OA96.58_F32.44_IoU22.82.pth \
-#            --encoder effSAM
+     python -u predictions.py  \
+           --test_dir ../data/label_studio_pre_post/$partition \
+           --pred_dir ../results/$partition/effSAM \
+           --chkpt_path ../data/checkpoints/effSAM_CD_e33_OA96.58_F32.44_IoU22.82.pth \
+           --encoder effSAM
 
       # ResNet Predictions on test dataset
-#      python -u predictions.py  \
-#            --test_dir ../data/label_studio_pre_post/$partition \
-#            --pred_dir ../results/$partition/ResNet \
-#            --chkpt_path ../data/checkpoints/ResNet_CD_e19_OA95.93_F29.45_IoU19.75.pth \
-#            --encoder ResNet
+     python -u predictions.py  \
+           --test_dir ../data/label_studio_pre_post/$partition \
+           --pred_dir ../results/$partition/ResNet \
+           --chkpt_path ../data/checkpoints/ResNet_CD_e19_OA95.93_F29.45_IoU19.75.pth \
+           --encoder ResNet
 
       # SAM Predictions on test dataset
-#      python -u predictions.py  \
-#            --test_dir ../data/label_studio_pre_post/$partition \
-#            --pred_dir ../results/$partition/SAM \
-#            --chkpt_path ../data/checkpoints/SAM_CD_e10_OA96.68_F35.55_IoU25.07.pth \
-#            --encoder SAM
+     python -u predictions.py  \
+           --test_dir ../data/label_studio_pre_post/$partition \
+           --pred_dir ../results/$partition/SAM \
+           --chkpt_path ../data/checkpoints/SAM_CD_e10_OA96.68_F35.55_IoU25.07.pth \
+           --encoder SAM
 
       # Based on the predictions above, calculate the scores
       # Make sure to run predicitions before
-#      python -u evaluate.py --partition $partition
-#done
+     python -u evaluate.py --partition $partition
+done
 
 
 #########################################################################
 # Visualization
 #########################################################################
-#python -u visualization.py --partition test
+for partition in train val test
+do
+      python -u visualization.py --partition $partition
+done
