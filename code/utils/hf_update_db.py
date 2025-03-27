@@ -38,7 +38,7 @@ from huggingface_hub import HfApi
 
 # Create a new dataset repository on Hugging Face
 api = HfApi()
-#api.create_repo(repo_id="hkayabilisim/jurse2025", repo_type="dataset")
+#api.create_repo(repo_id="cscsr/kate-cd", repo_type="dataset")
 
 # Push the dataset
-dataset_dict.push_to_hub("hkayabilisim/kate-cd")
+dataset_dict.push_to_hub("cscsr/kate-cd")

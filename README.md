@@ -3,7 +3,7 @@ Welcome to the home page of Kahramanmaraş Türkiye Earthquake-Change Detection 
 
 * [Code Ocean Capsule](https://codeocean.com/capsule/3747729) in [Open Science Library](https://codeocean.com/explore) 
 * [GitHub Repository](https://github.com/hkayabilisim/kate-cd)
-* [HuggingFace](https://huggingface.co/datasets/hkayabilisim/kate-cd)
+* [HuggingFace](https://huggingface.co/datasets/cscsr/kate-cd)
 
 The **KATE-CD Dataset** and the associated codes and supplementary information are published in three places i.e. CodeOcean, GitHub and HuggingFAce for providing redundancy and extended reach. All of the content uploaded to the three websites are the same except small differences because of platform requirements. The CodeOcean platform is mainly used for reproducibility, whereas GitHub is used to provide git access and hence easy collaboration between **KATE-CD Dataset** developers. Finally HuggingFace provides an easy access to the database where you can run existing models in HuggingFace on KATE-CD without too much effort.
 
@@ -66,14 +66,14 @@ In the results folder of the CodeOcean capsule, you can reach the pre-computed o
 ### Differences between the platforms:
 * CodeOcean is the primary source of the dataset (*data* folder) and the codes (*code* folder).
 * GitHub does not contain *data* folder because GitHub is not designed to store and manage large files.
-* [HuggingFace dataset](https://huggingface.co/datasets/hkayabilisim/kate-cd) is hosted on an isolated repository with Large File Support (LFS). In this isolated repo, Parquet files of the original *data* folder are served. It also includes a README file with an auto-generated metadata for visual presentation on HuggingFace.
+* [HuggingFace dataset](https://huggingface.co/datasets/cscsr/kate-cd) is hosted on an isolated repository with Large File Support (LFS). In this isolated repo, Parquet files of the original *data* folder are served. It also includes a README file with an auto-generated metadata for visual presentation on HuggingFace.
   
 ### GitHub Access
 If you would like to look at the capsule more closely, and build a working development environment then you can use [Development Containers](https://containers.dev/) functionality of VSCode. For this purpose, we created **.devcontainer/devcontainer.json** file under the root folder in the capsule. The purpose of this config file is to tell VSCode the location of the **Dockerfile**. Here, for design purposes, we used the same **Dockerfile** provided by CodeOcean. In this way, we do not interfere the building process in the CodeOcean. 
 
 To open the GitHub repository in DevContainers, you can click the button below. It will open the VSCode in DevContainers mode and fetch the GitHub repository automatically.
 
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hkayabilisim/jurse2025.git)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hkayabilisim/kate-cd.git)
 
 ### CodeOcean Access
 To open the capsule in VSCode via [Development Containers](https://containers.dev/), you first need to download the capsule. There are two ways: either you can use the capsule export, or you can pull the capsule from git repository. We recommend using git. You can use either CodeOcean or GitHub repository (both have the same content).
@@ -91,7 +91,7 @@ $ git clone https://github.com/hkayabilisim/kate-cd.git
 The next step is to open VSCode, select *Open a Remote Window* and then *Open Folder in Container..." option. Select your cloned git folder and the VSCode should start building Docker container and open the content of the capsule. 
 
 ### HuggingFace Access
-[HuggingFace](https://huggingface.co/datasets/hkayabilisim/kate-cd) is used to host the database and provide a nice visual access to the developers. HuggingFace uses the Parquet format to host the database. HuggingFace also uses Large File Support (LFS) for the internal git repository. Therefore, we decided to isolate the git repository of HuggingFace from GitHub and CodeOcean. The git repository of HuggingFace host only the database (in Parquet format) and a README. 
+[HuggingFace](https://huggingface.co/datasets/cscsr/kate-cd) is used to host the database and provide a nice visual access to the developers. HuggingFace uses the Parquet format to host the database. HuggingFace also uses Large File Support (LFS) for the internal git repository. Therefore, we decided to isolate the git repository of HuggingFace from GitHub and CodeOcean. The git repository of HuggingFace host only the database (in Parquet format) and a README. 
 
 The Parquet files in the HuggingFace repository are updated via:
 
