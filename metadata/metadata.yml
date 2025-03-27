@@ -1,2 +1,26 @@
 metadata_version: 1
-name: 'KATE-CD: Kahramanmaraş Türkiye Earthquake-Change Detection'
+name: 'KATE-CD: Kahramanmaraş Türkiye Earthquake-Change Detection Dataset'
+description: A change detection dataset for earthquake damage assessment and the reproducibility
+  codes of the associated benchmark application.
+authors:
+- name: Hasan Nayir
+  affiliations:
+  - name: Payten
+- name: Hüseyin Kaya
+  affiliations:
+  - name: Payten
+- name: Gülşen Taşkın
+  affiliations:
+  - name: Istanbul Technical University
+- name: Nebiye Musaoğlu
+  affiliations:
+  - name: Istanbul Technical University
+- name: Burcu Amirgan
+  affiliations:
+  - name: Istanbul Technical University
+- name: Esra Özaydın
+  affiliations:
+  - name: Istanbul Technical University
+- name: Umur Deveci
+  affiliations:
+  - name: BEDAŞ
