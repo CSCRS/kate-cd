@@ -1,7 +1,7 @@
 # Welcome to the KATE-CD Dataset
 Welcome to the home page of Kahramanmaraş Türkiye Earthquake-Change Detection Dataset (KATE-CD). If you are reading this README, you are probably visiting one of the following places to learn more about **KATE-CD Dataset** and the associated study "*Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images*", to be presented in 17th International Conference on Joint Urban Remote Sensing ([JURSE 2025](https://2025.ieee-jurse.org)). 
 
-* [Code Ocean Capsule](https://codeocean.com/capsule/3747729) in [Open Science Library](https://codeocean.com/explore) 
+* [Code Ocean Capsule](https://doi.org/10.24433/CO.3747729.v1) in [Open Science Library](https://codeocean.com/explore/82765786-a936-438c-a75a-84e2817294c5) 
 * [GitHub Repository](https://github.com/cscrs/kate-cd)
 * [HuggingFace](https://huggingface.co/datasets/cscrs/kate-cd)
 
@@ -23,9 +23,9 @@ To integrate with the change detection frameworks, the dataset was structured in
 The dataset is published on three platforms: CodeOcean, GitHub and HuggingFace. The purpose of CodeOcean is to provide data, codes and the computing instructions to reproduce the results. CodeOcean uses the term *capsule* to define the collection of everything needed to reproduce the results. Depending on your goal and your time constraints, CodeOcean provide two alternatives to run the capsule and obtain the results: via Open Science Library or Capsule Export.
 
 ### Open Science Library
-If you visit this capsule via [Open Science Library](https://codeocean.com/explore) developed by [Code Ocean](https://codeocean.com), then you should be able to see the published results in the results folder of the capsule. Code Ocean has an internal publishing process to verify that on each run the capsule will produce the same results. So, if you are in a hurry, or don't bother running the capsule again, then you can take a look at the published results and check the codes and data in the capsule.
+If you visit [this capsule](https://doi.org/10.24433/CO.3747729.v1) via [Open Science Library](https://codeocean.com/explore/82765786-a936-438c-a75a-84e2817294c5) developed by [Code Ocean](https://codeocean.com), then you should be able to see the published results in the results folder of the capsule. Code Ocean has an internal publishing process to verify that on each run the capsule will produce the same results. So, if you are in a hurry, or don't bother running the capsule again, then you can take a look at the published results and check the codes and data in the capsule.
 
-If you want to run the capsule and produce results by yourself, then all you have to do is to click "Reproducible Run" button in the capsule page. The [Open Science Library](https://codeocean.com/explore) will run the capsule from the scratch and produce the results.
+If you want to run the capsule and produce results by yourself, then all you have to do is to click "Reproducible Run" button in the capsule page. The [Open Science Library](https://codeocean.com/explore/82765786-a936-438c-a75a-84e2817294c5) will run the capsule from the scratch and produce the results.
 
 ### Capsule Export
 If you would like to use your own computing resources for reproduction, then you can export the capsule via "Capsule"--> "Export" menu to your working environment. Please make sure to check "Include Data" option while exporting. After extracting the export file, you should follow the instructions in "REPRODUCING.md". For the sake of completeness, we mention the procesures here.
@@ -34,33 +34,34 @@ If you would like to use your own computing resources for reproduction, then you
 - [Docker Community Edition (CE)](https://www.docker.com/community-edition)
 
 #### Building the environment
-In your terminal, navigate to the folder where you've extracted the capsule and execute the following command:
-```shell
-cd environment && docker build . --tag e24e05d9-fd7f-4584-878b-4f19e31b750c; cd ..
-```
-
-This step will recreate the environment (i.e., the Docker image) locally, fetching and installing any required dependencies in the process. If any external resources have become unavailable for any reason, the environment will fail to build.
+This capsule has been published and its environment has been archived and made available on Code Ocean's Docker registry:
+`registry.codeocean.com/published/82765786-a936-438c-a75a-84e2817294c5:v1`
 
 ### Running the capsule to reproduce the results
 In your terminal, navigate to the folder where you've extracted the capsule and execute the following command, adjusting parameters as needed:
 ```shell
-docker run --platform linux/amd64 --rm \
+docker run --platform linux/amd64 --rm --gpus all \
   --workdir /code \
   --volume "$PWD/data":/data \
   --volume "$PWD/code":/code \
   --volume "$PWD/results":/results \
-  e24e05d9-fd7f-4584-878b-4f19e31b750c bash run
+  registry.codeocean.com/published/82765786-a936-438c-a75a-84e2817294c5:v1 bash run
 ```
 
 ## Published results
 In the results folder of the CodeOcean capsule, you can reach the pre-computed outputs of the code or you can generate them from scratch with single-click in CodeOcean. In either case, these outputs correspond to the published content in the manuscript. The mapping between capsule results and the content in the manuscript is as follows:
 
-    Code            CodeOcean         Manuscript
-    ------------    ----------------  ----------
-    predictions.py  val_scores.txt    Table II
-    evaluate.py     train_scores.txt
-                    test_scores.txt 
+    Code              Outputs           Manuscript
+    ------------      ----------------  ----------
+    predictions.py    val_scores.txt    Table II
+    evaluate.py       train_scores.txt
+                      test_scores.txt 
     ---------------------------------------------
+    visualization.py  val_plots.pdf     Figure 2
+                      train_plots.pdf
+                      test_plots.pdf
+    ---------------------------------------------
+                       
 
 ## For Developers
 ### Differences between the platforms:
@@ -80,6 +81,10 @@ To open the capsule in VSCode via [Development Containers](https://containers.de
 
 ~~~bash
 # CodeOcean git repository
+# There are two git repos in CodeOcean. 
+# (1) Repo of the published capsule (https://git.codeocean.com/capsule-9061546.git)
+# (2) Repo of the original capsule  (https://git.codeocean.com/capsule-3747729.git)
+# Here, we are using the git repo of the original capsule
 $ git clone https://git.codeocean.com/capsule-3747729.git
 ~~~
 or 
@@ -99,7 +104,7 @@ The Parquet files in the HuggingFace repository are updated via:
     $ python utils/hf_update_db.py
 
 ### Relative vs Absolute paths
-We use relative paths to locate the data files in the code to achieve compatibility between different working environments. In this way, the same codes and data structure can be used without any change if one tries to run the capsule on [Open Science Library](https://codeocean.com/explore) or local development environment. 
+We use relative paths to locate the data files in the code to achieve compatibility between different working environments. In this way, the same codes and data structure can be used without any change if one tries to run the capsule on [Open Science Library](https://codeocean.com/explore/82765786-a936-438c-a75a-84e2817294c5) or local development environment. 
 
 The only requirement of relative-path approach is to run Python codes within the **code** folder similar to this:
 ~~~bash
@@ -109,7 +114,7 @@ $ python predictions.py
 This approach also fits to the way how CodeOcean runs the capsule.
 
 ### Reproducibility results folder
-If you visit [Open Science Library](https://codeocean.com/explore), you will see that published results are always populated under **results** folder. This is a special folder CodeOcean uses to store the outputs likes PDFs, PNGs, or ordinary text outputs. Therefore, in CodeOcean capsules **results** folder is not included in *git* structure. So, when you pull or export a CodeOcean capsule, you won't see this folder. Whenever you create an output, you should create **results** folder and put the outputs under it. For the same reason, you should not include it to git. 
+If you visit [Open Science Library](https://codeocean.com/explore/82765786-a936-438c-a75a-84e2817294c5), you will see that published results are always populated under **results** folder. This is a special folder CodeOcean uses to store the outputs likes PDFs, PNGs, or ordinary text outputs. Therefore, in CodeOcean capsules **results** folder is not included in *git* structure. So, when you pull or export a CodeOcean capsule, you won't see this folder. Whenever you create an output, you should create **results** folder and put the outputs under it. For the same reason, you should not include it to git. 
 
 
 

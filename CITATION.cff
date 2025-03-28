@@ -1,5 +1,7 @@
 cff-version: 1.2.0
+title: "Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images"
 message: "If you use this software, please cite it as below."
+type: dataset
 authors:
 - family-names: "Nayir"
   given-names: "Hasan"
@@ -15,7 +17,17 @@ authors:
   given-names: "Esra"
 - family-names: "Deveci"
   given-names: "Umur"
-title: "Earthquake Damage Assessment with SAMCD: A Change Detection Approach for VHR Images"
 version: 1
-date-released: 2025-03-15
-url: "https://github.com/cscrs/kate-cd"
+identifiers:
+  - type: doi
+    value: 10.24433/CO.3747729.v1
+date-released: 2025-03-28
+repository-code: 'https://codeocean.com/capsule/9061546/tree/v1'
+repository: 'https://github.com/cscrs/kate-cd'
+repository-artifact: 'https://huggingface.co/datasets/CSCRS/kate-cd'
+keywords:
+  - earthquake damage assessment
+  - change detetion dataset
+  - vision foundation models
+  - remote sensing
+license: CC 1.0 Universal
